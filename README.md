@@ -1,92 +1,60 @@
-Movie Genre Classification
-This project implements a movie genre classification system using Logistic Regression, SVM, and DistilBERT models. The train_data.txt is used for training, and the evaluate.py script predicts genres for the unlabeled test_data.txt.
-Project Structure
-Movie-Genre-Classification/
-│
-├── data/
-│   ├── train_data.txt    # Training data (ID ::: Title ::: Genre ::: Plot)
-│   └── test_data.txt     # Test data (ID ::: Title ::: Plot, no genre)
-│
-├── models/               # Trained models (logreg_model.joblib, svm_model.joblib, distilbert_model/)
-│
-├── outputs/              # Predicted genres (e.g., logreg_predictions.csv)
-│
-├── src/
-│   ├── preprocess.py     # Data preprocessing and vectorization
-│   ├── train.py          # Model training script
-│   └── evaluate.py       # Prediction script for test data
-│
-└── README.md             # This file
+# Movie Genre Classification
 
-Prerequisites
+Welcome to the **Movie Genre Classification** project! This repository implements a robust movie genre prediction system using Logistic Regression, Support Vector Machine (SVM), and DistilBERT models. The `train_data.txt` file trains the models, while the `evaluate.py` script generates genre predictions for the unlabeled `test_data.txt`.
 
-Python 3.8+
-Required libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
+## Overview
 
-Installation
+This project leverages machine learning to classify movie genres based on plot summaries, offering a practical application of natural language processing (NLP). It’s designed for ease of use in a Codespaces environment and is ideal for learning, experimentation, or integration into larger systems.
 
-Clone or set up the repository in Codespaces:
-cd /workspaces/
-git clone <your-repo-url> Movie-Genre-Classification
-cd Movie-Genre-Classification
+## Project Structure
 
+- `Movie-Genre-Classification/`
+  - `data/`
+    - `train_data.txt` # Training data (ID ::: Title ::: Genre ::: Plot)
+    - `test_data.txt`  # Test data (ID ::: Title ::: Plot, no genre)
+  - `models/`          # Trained models (logreg_model.joblib, svm_model.joblib, distilbert_model/)
+  - `outputs/`         # Predicted genres (e.g., logreg_predictions.csv)
+  - `src/`
+    - `preprocess.py`  # Data preprocessing and vectorization
+    - `train.py`       # Model training script
+    - `evaluate.py`    # Prediction script for test data
+  - `README.md`        # This file
 
-Install dependencies:
-pip install pandas numpy scikit-learn transformers torch joblib textblob nltk
+## Prerequisites
 
+- **Python 3.8+**
+- Required libraries: `pandas`, `numpy`, `scikit-learn`, `transformers`, `torch`, `joblib`, `textblob`, `nltk`
 
+## Installation
 
-Data Preparation
+1. Clone or set up the repository in Codespaces: `cd /workspaces/ && git clone <your-repo-url> Movie-Genre-Classification && cd Movie-Genre-Classification`
+2. Install dependencies: `pip install pandas numpy scikit-learn transformers torch joblib textblob nltk`
 
-Place train_data.txt and test_data.txt in the data/ directory.
+## Data Preparation
 
-train_data.txt format: Each line should be ID ::: Title ::: Genre ::: Plot (e.g., 1 ::: Oscar et la dame rose (2009) ::: drama ::: Listening in to a conversation...).
+- Place `train_data.txt` and `test_data.txt` in the `data/` directory.
+- **train_data.txt** format: Each line must follow `ID ::: Title ::: Genre ::: Plot` (e.g., `1 ::: Oscar et la dame rose (2009) ::: drama ::: Listening in to a conversation...`).
+- **test_data.txt** format: Each line must follow `ID ::: Title ::: Plot` (e.g., `1 ::: Edgar's Lunch (1998) ::: L.R. Brane loves his life...`), with no genre.
+- Ensure files use `utf-8` encoding. If issues occur, re-save with a text editor or run: `iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt`
 
-test_data.txt format: Each line should be ID ::: Title ::: Plot (e.g., 1 ::: Edgar's Lunch (1998) ::: L.R. Brane loves his life...), with no genre.
+## Usage
 
-Ensure files are saved with utf-8 encoding. If issues arise, re-save with a text editor or use:
-iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt
+### 1. Train Models
 
+Execute the training script with `cd src && python train.py` to train models using `train_data.txt`.
 
+- Trained models are saved in `models/`:
+  - `logreg_model.joblib` (Logistic Regression)
+  - `svm_model.joblib` (Support Vector Machine)
+  - `distilbert_model/` (DistilBERT with tokenizer and label encoder)
 
-Usage
-1. Train Models
-Run the training script to train models using train_data.txt:
-cd src
-python train.py
+### 2. Predict Genres
 
+Run the evaluation script with `python evaluate.py` to predict genres for `test_data.txt`.
 
-Models are saved in models/:
-logreg_model.joblib (Logistic Regression)
-svm_model.joblib (Support Vector Machine)
-distilbert_model/ (DistilBERT with tokenizer and label encoder)
+- Predictions are saved in `outputs/` as CSV files (e.g., `logreg_predictions.csv`, `svm_predictions.csv`, `distilbert_predictions.csv`) with columns `id`, `title`, `plot`, and `predicted_genre`.
 
+### 3. Verify Output
 
-
-2. Predict Genres
-Run the evaluation script to predict genres for test_data.txt:
-python evaluate.py
-
-
-Predictions are saved in outputs/ as CSV files (e.g., logreg_predictions.csv, svm_predictions.csv, distilbert_predictions.csv) with columns id, title, plot, and predicted_genre.
-
-3. Verify Output
-
-Check models/ for trained models.
-Check outputs/ for prediction files.
-
-Troubleshooting
-
-Empty test_df or Errors: If logs show "Skipping malformed line," verify test_data.txt format. Share debug logs (e.g., Raw line: '...', Split parts: [...]) for assistance.
-Missing Models: Ensure train.py runs successfully before evaluate.py.
-Encoding Issues: If data loading fails, try utf-8-sig encoding by modifying preprocess.py to use encoding='utf-8-sig' in the open() calls.
-Prediction Mismatch: Ensure train_data.txt has sufficient genre variety for training.
-
-Notes
-
-The project assumes a Codespaces environment at /workspaces/Movie-Genre-Classification/.
-Logs are output to the terminal for debugging (e.g., INFO:src.preprocess:Loaded test_df with columns: [...]).
-Predictions are based on trained models; accuracy depends on training data quality.
-
-License
-[Add your license here, e.g., MIT License]
+- Confirm `models/` contains the trained models.
+- Verify `outputs/` contains the prediction files.
