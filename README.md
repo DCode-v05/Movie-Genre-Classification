@@ -11,7 +11,7 @@ This project leverages machine learning to classify movie genres based on plot s
 - `Movie-Genre-Classification/`
   - `data/`
     - `train_data.txt` # Training data (ID ::: Title ::: Genre ::: Plot)
-    - `test_data.txt`  # Test data (ID ::: Title ::: Plot, no genre)
+    - `test_data.txt`  # Test data (ID ::: Title ::: Plot)
   - `models/`          # Trained models (logreg_model.joblib, svm_model.joblib, distilbert_model/)
   - `outputs/`         # Predicted genres (e.g., logreg_predictions.csv)
   - `src/`
