@@ -4,7 +4,7 @@ import joblib
 import torch
 import os
 import logging
-from transformers import DistilBertForSequenceClassification
+from transformers import DistilBertForSequenceClassification, DistilBertTokenizer
 from torch.utils.data import DataLoader
 
 # Import preprocess_data from the same directory
@@ -93,11 +93,11 @@ def main():
     distilbert_path = os.path.join(models_dir, 'distilbert_model')
     if not os.path.exists(distilbert_path):
         raise FileNotFoundError(f"DistilBERT model directory not found at {distilbert_path}")
-    for file_name in ['config.json', 'model.safetensors', 'tokenizer.joblib', 'label_encoder.joblib']:
+    for file_name in ['config.json', 'model.safetensors', 'label_encoder.joblib']:
         if not os.path.exists(os.path.join(distilbert_path, file_name)):
             raise FileNotFoundError(f"Required DistilBERT file {file_name} not found in {distilbert_path}")
     distilbert_model = DistilBertForSequenceClassification.from_pretrained(distilbert_path)
-    tokenizer = joblib.load(os.path.join(distilbert_path, 'tokenizer.joblib'))
+    tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
     label_encoder = joblib.load(os.path.join(distilbert_path, 'label_encoder.joblib'))
     predict_and_save(
         distilbert_model, 
