@@ -1,7 +1,5 @@
 import sys
 import os
-# Add project root to sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LogisticRegression
@@ -10,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 from transformers import DistilBertTokenizer, DistilBertForSequenceClassification, Trainer, TrainingArguments
 import torch
 import joblib
-from src.preprocess import preprocess_data
+from preprocess import preprocess_data
 
 def train_logreg(X, y, model_path):
     """Train and save Logistic Regression model."""
