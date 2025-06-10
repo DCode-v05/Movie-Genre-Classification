@@ -1,60 +1,104 @@
-# Movie Genre Classification
+MovieGenrePredictor
+ 
+Welcome to MovieGenrePredictor! This project is an AI-powered movie genre classification system that predicts genres from plot summaries using Logistic Regression, Support Vector Machine (SVM), and DistilBERT models. Built for developers and NLP enthusiasts, it’s a practical tool for learning, experimenting, or integrating into larger systems.
+🚀 Features
 
-Welcome to the **Movie Genre Classification** project! This repository implements a robust movie genre prediction system using Logistic Regression, Support Vector Machine (SVM), and DistilBERT models. The `train_data.txt` file trains the models, while the `evaluate.py` script generates genre predictions for the unlabeled `test_data.txt`.
+Multi-Model Prediction: Combines Logistic Regression, SVM, and DistilBERT for robust genre classification.
+NLP-Driven: Leverages natural language processing to analyze movie plot summaries.
+Easy Setup: Designed for seamless use in GitHub Codespaces or local environments.
+Structured Output: Generates CSV files with predicted genres for test data.
 
-## Overview
+🛠️ Tech Stack
 
-This project leverages machine learning to classify movie genres based on plot summaries, offering a practical application of natural language processing (NLP). It’s designed for ease of use in a Codespaces environment and is ideal for learning, experimentation, or integration into larger systems.
+AI/ML: Scikit-learn (Logistic Regression, SVM), Transformers (DistilBERT), PyTorch
+Data Processing: Pandas, NumPy, TextBlob, NLTK
+Tools: Joblib (model serialization), Git, GitHub Codespaces
+Language: Python 3.8+
+Other: UTF-8 encoded text files for data input
 
-## Project Structure
+🏁 Getting Started
+Prerequisites
 
-- `Movie-Genre-Classification/`
-  - `data/`
-    - `train_data.txt` # Training data (ID ::: Title ::: Genre ::: Plot)
-    - `test_data.txt`  # Test data (ID ::: Title ::: Plot)
-  - `models/`          # Trained models (logreg_model.joblib, svm_model.joblib, distilbert_model/)
-  - `outputs/`         # Predicted genres (e.g., logreg_predictions.csv)
-  - `src/`
-    - `preprocess.py`  # Data preprocessing and vectorization
-    - `train.py`       # Model training script
-    - `evaluate.py`    # Prediction script for test data
-  - `README.md`        # This file
+Python 3.8+
+Required libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
+UTF-8 encoded train_data.txt and test_data.txt files in the data/ directory
 
-## Prerequisites
+Installation
 
-- **Python 3.8+**
-- Required libraries: `pandas`, `numpy`, `scikit-learn`, `transformers`, `torch`, `joblib`, `textblob`, `nltk`
+Clone the repository:git clone https://github.com/Denistanb/Movie-Genre-Classification.git
 
-## Installation
 
-1. Clone or set up the repository in Codespaces: `cd /workspaces/ && git clone <your-repo-url> Movie-Genre-Classification && cd Movie-Genre-Classification`
-2. Install dependencies: `pip install pandas numpy scikit-learn transformers torch joblib textblob nltk`
+Navigate to the project directory:cd Movie-Genre-Classification
 
-## Data Preparation
 
-- Place `train_data.txt` and `test_data.txt` in the `data/` directory.
-- **train_data.txt** format: Each line must follow `ID ::: Title ::: Genre ::: Plot` (e.g., `1 ::: Oscar et la dame rose (2009) ::: drama ::: Listening in to a conversation...`).
-- **test_data.txt** format: Each line must follow `ID ::: Title ::: Plot` (e.g., `1 ::: Edgar's Lunch (1998) ::: L.R. Brane loves his life...`), with no genre.
-- Ensure files use `utf-8` encoding. If issues occur, re-save with a text editor or run: `iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt`
+Install dependencies:pip install pandas numpy scikit-learn transformers torch joblib textblob nltk
 
-## Usage
 
-### 1. Train Models
+Ensure data files are in place:
+Place train_data.txt and test_data.txt in the data/ directory.
+Verify UTF-8 encoding. If issues occur, run:iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt
 
-Execute the training script with `cd src && python train.py` to train models using `train_data.txt`.
 
-- Trained models are saved in `models/`:
-  - `logreg_model.joblib` (Logistic Regression)
-  - `svm_model.joblib` (Support Vector Machine)
-  - `distilbert_model/` (DistilBERT with tokenizer and label encoder)
 
-### 2. Predict Genres
 
-Run the evaluation script with `python evaluate.py` to predict genres for `test_data.txt`.
 
-- Predictions are saved in `outputs/` as CSV files (e.g., `logreg_predictions.csv`, `svm_predictions.csv`, `distilbert_predictions.csv`) with columns `id`, `title`, `plot`, and `predicted_genre`.
+Usage
 
-### 3. Verify Output
+Train Models:
 
-- Confirm `models/` contains the trained models.
-- Verify `outputs/` contains the prediction files.
+Run the training script to train models using train_data.txt:cd src && python train.py
+
+
+Trained models are saved in models/:
+logreg_model.joblib (Logistic Regression)
+svm_model.joblib (SVM)
+distilbert_model/ (DistilBERT with tokenizer and label encoder)
+
+
+
+
+Predict Genres:
+
+Run the evaluation script to predict genres for test_data.txt:python evaluate.py
+
+
+Predictions are saved in outputs/ as CSV files (e.g., logreg_predictions.csv) with columns id, title, plot, predicted_genre.
+
+
+Verify Results:
+
+Check models/ for trained models.
+Check outputs/ for prediction CSV files.
+
+
+
+🧠️ Project Structure
+MovieGenrePredictor/
+├── data/              # Input data
+│   ├── train_data.txt    # Training data (ID ::: Title ::: Genre ::: Plot)
+│   └── test_data.txt     # Test data (ID ::: Title ::: Plot)
+├── models/            # Trained models
+│   ├── logreg_model.joblib
+│   ├── svm_model.joblib
+│   └── distilbert_model/
+├── outputs/           # Prediction results (e.g., logreg_predictions.csv)
+├── src/               # Source code
+│   ├── preprocess.py     # Data preprocessing and vectorization
+│   ├── train.py          # Model training script
+│   └── evaluate.py       # Prediction script
+├── README.md          # This file
+
+🤝 Contributing
+Contributions are welcome! To contribute:
+
+Fork the repository.
+Create a new branch (git checkout -b feature/your-feature).
+Commit your changes (git commit -m "Add your feature").
+Push to the branch (git push origin feature/your-feature).
+Open a pull request.
+
+📬 Contact
+Have questions or feedback? Reach out to me:
+
+GitHub: Denistanb
+Email: [denistanb05@gmail.com] 
