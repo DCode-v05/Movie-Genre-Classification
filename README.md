@@ -1,77 +1,91 @@
 # MovieGenrePredictor
 
-Welcome to MovieGenrePredictor! This project is an AI-powered movie genre classification system that predicts genres from plot summaries using Logistic Regression, Support Vector Machine (SVM), and DistilBERT.
+## Project Description
 
-## 🚀 Features
+MovieGenrePredictor is an AI-powered system designed to predict movie genres from plot summaries using multiple machine learning models, including Logistic Regression, Support Vector Machine (SVM), and DistilBERT. The project utilizes natural language processing (NLP) techniques to analyze and classify movie plots, making it an effective tool for automated genre classification.
 
-- **Multi-Model Prediction:** Combines Logistic Regression, SVM, and DistilBERT for robust genre classification.
-- **NLP-Driven:** Leverages natural language processing to analyze movie plot summaries.
-- **Easy Setup:** Designed for seamless use in GitHub Codespaces or local environments.
-- **Structured Output:** Generates CSV files with predicted genres for test data.
+## Features
 
-## 🛠️ Tech Stack
+- Supports multiple models: Logistic Regression, SVM, and DistilBERT.
+- Utilizes NLP to process and understand movie plot summaries.
+- Simple setup for use on local machines or GitHub Codespaces.
+- Outputs predictions in structured CSV files for further analysis.
 
-- **AI/ML:** Scikit-learn (Logistic Regression, SVM), Transformers (DistilBERT), PyTorch
-- **Data Processing:** Pandas, NumPy, TextBlob, NLTK
-- **Tools:** Joblib (model serialization), Git, GitHub Codespaces
-- **Language:** Python 3.8+
-- **Other:** UTF-8 encoded text files for data input
+## Tech Stack
 
-## 🏁 Getting Started
+- Python 3.8+
+- Scikit-learn (Logistic Regression, SVM)
+- Transformers (DistilBERT)
+- PyTorch
+- Pandas, NumPy, TextBlob, NLTK
+- Joblib for model serialization
+
+## Getting Started
+
+This section provides an overview of how to set up and use the project.
 
 ### Prerequisites
 
-- Python 3.8+
-- Required libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
-- UTF-8 encoded `train_data.txt` and `test_data.txt` files in the `data/` directory
+- Python 3.8 or higher
+- Required Python libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
+- Training and test data files (`train_data.txt` and `test_data.txt`) encoded in UTF-8, placed under the `data/` directory
 
 ### Installation
 
-1. Clone the repository:  
-   `git clone https://github.com/Denistanb/Movie-Genre-Classification.git`
+1. **Clone the repository:**
+   ```
+   git clone https://github.com/Denistanb/Movie-Genre-Classification.git
+   ```
 
-2. Navigate to the project directory:  
-   `cd Movie-Genre-Classification`
+2. **Navigate to the project directory:**
+   ```
+   cd Movie-Genre-Classification
+   ```
 
-3. Install dependencies:  
-   `pip install pandas numpy scikit-learn transformers torch joblib textblob nltk`
+3. **Install the required dependencies:**
+   ```
+   pip install pandas numpy scikit-learn transformers torch joblib textblob nltk
+   ```
 
-4. Ensure data files are in place:  
+4. **Prepare the data files:**
    - Place `train_data.txt` and `test_data.txt` in the `data/` directory.
-   - Verify UTF-8 encoding. If issues occur, run:  
-     `iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt`
+   - Ensure files are UTF-8 encoded. To fix encoding issues, you can use:
+     ```
+     iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt
+     ```
 
 ## Usage
 
 ### Train Models
 
-Run the training script to train models using `train_data.txt`:
+Run the training script to train the models using your training data:
 
-```bash
-cd src && python train.py
+```
+cd src
+python train.py
 ```
 
-Trained models are saved in `models/`:
-- `logreg_model.joblib` (Logistic Regression)
-- `svm_model.joblib` (SVM)
-- `distilbert_model/` (DistilBERT with tokenizer and label encoder)
+The trained models will be saved in the `models/` directory as follows:
+- `logreg_model.joblib` for Logistic Regression
+- `svm_model.joblib` for SVM
+- `distilbert_model/` directory for DistilBERT
 
 ### Predict Genres
 
-Run the evaluation script to predict genres for `test_data.txt`:
+Run the evaluation script to generate predictions for your test data:
 
-```bash
+```
 python evaluate.py
 ```
 
-Predictions are saved in `outputs/` as CSV files (e.g., `logreg_predictions.csv`) with columns: `id`, `title`, `plot`, `predicted_genre`.
+Prediction results will be saved in the `outputs/` directory as CSV files (e.g., `logreg_predictions.csv`), each containing columns: `id`, `title`, `plot`, `predicted_genre`.
 
 ### Verify Results
 
-- Check `models/` for trained models.
-- Check `outputs/` for prediction CSV files.
+- Trained models are stored in the `models/` directory.
+- Prediction outputs are available in the `outputs/` directory.
 
-## 🧠️ Project Structure
+## Project Structure
 
 ```
 MovieGenrePredictor/
@@ -87,22 +101,31 @@ MovieGenrePredictor/
 │   ├── preprocess.py     # Data preprocessing and vectorization
 │   ├── train.py          # Model training script
 │   └── evaluate.py       # Prediction script
-├── README.md          # This file
+├── README.md           # Project documentation
 ```
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! To contribute:
+Contributions are welcome. To contribute:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m "Add your feature"`).
-4. Push to the branch (`git push origin feature/your-feature`).
+2. Create a new branch:
+   ```
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```
+   git commit -m "Add your feature"
+   ```
+4. Push to the branch:
+   ```
+   git push origin feature/your-feature
+   ```
 5. Open a pull request.
 
-## 📬 Contact
+## Contact
 
-Have questions or feedback? Reach out to me:
+For questions or feedback, contact:
 
-- **GitHub:** Denistanb
-- **Email:** denistanb05@gmail.com
+- GitHub: Denistanb
+- Email: denistanb05@gmail.com
