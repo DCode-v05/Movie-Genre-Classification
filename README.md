@@ -127,5 +127,5 @@ Contributions are welcome. To contribute:
 
 For questions or feedback, contact:
 
-- GitHub: Denistanb
+- GitHub: [Denistanb](https://github.com/Denistanb)
 - Email: denistanb05@gmail.com
