@@ -1,78 +1,79 @@
-MovieGenrePredictor
- 
-Welcome to MovieGenrePredictor! This project is an AI-powered movie genre classification system that predicts genres from plot summaries using Logistic Regression, Support Vector Machine (SVM), and DistilBERT models. Built for developers and NLP enthusiasts, it’s a practical tool for learning, experimenting, or integrating into larger systems.
-🚀 Features
+# MovieGenrePredictor
 
-Multi-Model Prediction: Combines Logistic Regression, SVM, and DistilBERT for robust genre classification.
-NLP-Driven: Leverages natural language processing to analyze movie plot summaries.
-Easy Setup: Designed for seamless use in GitHub Codespaces or local environments.
-Structured Output: Generates CSV files with predicted genres for test data.
+Welcome to MovieGenrePredictor! This project is an AI-powered movie genre classification system that predicts genres from plot summaries using Logistic Regression, Support Vector Machine (SVM), and DistilBERT.
 
-🛠️ Tech Stack
+## 🚀 Features
 
-AI/ML: Scikit-learn (Logistic Regression, SVM), Transformers (DistilBERT), PyTorch
-Data Processing: Pandas, NumPy, TextBlob, NLTK
-Tools: Joblib (model serialization), Git, GitHub Codespaces
-Language: Python 3.8+
-Other: UTF-8 encoded text files for data input
+- **Multi-Model Prediction:** Combines Logistic Regression, SVM, and DistilBERT for robust genre classification.
+- **NLP-Driven:** Leverages natural language processing to analyze movie plot summaries.
+- **Easy Setup:** Designed for seamless use in GitHub Codespaces or local environments.
+- **Structured Output:** Generates CSV files with predicted genres for test data.
 
-🏁 Getting Started
-Prerequisites
+## 🛠️ Tech Stack
 
-Python 3.8+
-Required libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
-UTF-8 encoded train_data.txt and test_data.txt files in the data/ directory
+- **AI/ML:** Scikit-learn (Logistic Regression, SVM), Transformers (DistilBERT), PyTorch
+- **Data Processing:** Pandas, NumPy, TextBlob, NLTK
+- **Tools:** Joblib (model serialization), Git, GitHub Codespaces
+- **Language:** Python 3.8+
+- **Other:** UTF-8 encoded text files for data input
 
-Installation
+## 🏁 Getting Started
 
-Clone the repository:git clone https://github.com/Denistanb/Movie-Genre-Classification.git
+### Prerequisites
 
+- Python 3.8+
+- Required libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
+- UTF-8 encoded `train_data.txt` and `test_data.txt` files in the `data/` directory
 
-Navigate to the project directory:cd Movie-Genre-Classification
+### Installation
 
+1. Clone the repository:  
+   `git clone https://github.com/Denistanb/Movie-Genre-Classification.git`
 
-Install dependencies:pip install pandas numpy scikit-learn transformers torch joblib textblob nltk
+2. Navigate to the project directory:  
+   `cd Movie-Genre-Classification`
 
+3. Install dependencies:  
+   `pip install pandas numpy scikit-learn transformers torch joblib textblob nltk`
 
-Ensure data files are in place:
-Place train_data.txt and test_data.txt in the data/ directory.
-Verify UTF-8 encoding. If issues occur, run:iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt
+4. Ensure data files are in place:  
+   - Place `train_data.txt` and `test_data.txt` in the `data/` directory.
+   - Verify UTF-8 encoding. If issues occur, run:  
+     `iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt`
 
+## Usage
 
+### Train Models
 
+Run the training script to train models using `train_data.txt`:
 
+```bash
+cd src && python train.py
+```
 
-Usage
+Trained models are saved in `models/`:
+- `logreg_model.joblib` (Logistic Regression)
+- `svm_model.joblib` (SVM)
+- `distilbert_model/` (DistilBERT with tokenizer and label encoder)
 
-Train Models:
+### Predict Genres
 
-Run the training script to train models using train_data.txt:cd src && python train.py
+Run the evaluation script to predict genres for `test_data.txt`:
 
+```bash
+python evaluate.py
+```
 
-Trained models are saved in models/:
-logreg_model.joblib (Logistic Regression)
-svm_model.joblib (SVM)
-distilbert_model/ (DistilBERT with tokenizer and label encoder)
+Predictions are saved in `outputs/` as CSV files (e.g., `logreg_predictions.csv`) with columns: `id`, `title`, `plot`, `predicted_genre`.
 
+### Verify Results
 
+- Check `models/` for trained models.
+- Check `outputs/` for prediction CSV files.
 
+## 🧠️ Project Structure
 
-Predict Genres:
-
-Run the evaluation script to predict genres for test_data.txt:python evaluate.py
-
-
-Predictions are saved in outputs/ as CSV files (e.g., logreg_predictions.csv) with columns id, title, plot, predicted_genre.
-
-
-Verify Results:
-
-Check models/ for trained models.
-Check outputs/ for prediction CSV files.
-
-
-
-🧠️ Project Structure
+```
 MovieGenrePredictor/
 ├── data/              # Input data
 │   ├── train_data.txt    # Training data (ID ::: Title ::: Genre ::: Plot)
@@ -87,18 +88,21 @@ MovieGenrePredictor/
 │   ├── train.py          # Model training script
 │   └── evaluate.py       # Prediction script
 ├── README.md          # This file
+```
 
-🤝 Contributing
+## 🤝 Contributing
+
 Contributions are welcome! To contribute:
 
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Commit your changes (git commit -m "Add your feature").
-Push to the branch (git push origin feature/your-feature).
-Open a pull request.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
 
-📬 Contact
+## 📬 Contact
+
 Have questions or feedback? Reach out to me:
 
-GitHub: Denistanb
-Email: [denistanb05@gmail.com] 
+- **GitHub:** Denistanb
+- **Email:** denistanb05@gmail.com
