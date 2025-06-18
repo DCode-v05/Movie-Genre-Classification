@@ -1,4 +1,4 @@
-# MovieGenrePredictor
+# Movie Genre Predictor
 
 ## Project Description
 
