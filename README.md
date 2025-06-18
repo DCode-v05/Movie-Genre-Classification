@@ -89,19 +89,18 @@ Prediction results will be saved in the `outputs/` directory as CSV files (e.g.,
 
 ```
 MovieGenrePredictor/
-├── data/              # Input data
+├── data/                 # Input data
 │   ├── train_data.txt    # Training data (ID ::: Title ::: Genre ::: Plot)
 │   └── test_data.txt     # Test data (ID ::: Title ::: Plot)
-├── models/            # Trained models
+├── models/               # Trained models
 │   ├── logreg_model.joblib
 │   ├── svm_model.joblib
 │   └── distilbert_model/
-├── outputs/           # Prediction results (e.g., logreg_predictions.csv)
-├── src/               # Source code
-│   ├── preprocess.py     # Data preprocessing and vectorization
-│   ├── train.py          # Model training script
-│   └── evaluate.py       # Prediction script
-├── README.md           # Project documentation
+├── outputs/              # Prediction results (e.g., logreg_predictions.csv)
+└── src/                  # Source code
+   ├── preprocess.py      # Data preprocessing and vectorization
+   ├── train.py           # Model training script
+   └── evaluate.py        # Prediction script
 ```
 
 ## Contributing
