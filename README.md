@@ -98,9 +98,9 @@ MovieGenrePredictor/
 │   └── distilbert_model/
 ├── outputs/              # Prediction results (e.g., logreg_predictions.csv)
 └── src/                  # Source code
-   ├── preprocess.py      # Data preprocessing and vectorization
-   ├── train.py           # Model training script
-   └── evaluate.py        # Prediction script
+    ├── preprocess.py     # Data preprocessing and vectorization
+    ├── train.py          # Model training script
+    └── evaluate.py       # Prediction script
 ```
 
 ## Contributing
