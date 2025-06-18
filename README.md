@@ -1,4 +1,4 @@
-# Movie Genre Predictor
+# Movie Genre Classification
 
 ## Project Description
 
