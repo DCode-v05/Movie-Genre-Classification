@@ -4,13 +4,27 @@
 
 Movie Genre Classification is an AI-powered system that predicts movie genres from plot summaries using advanced Natural Language Processing (NLP) and machine learning models. The project leverages Logistic Regression, Support Vector Machine (SVM), and DistilBERT to automate and enhance the genre classification process for movie datasets. It is designed for researchers, data scientists, and movie enthusiasts interested in text classification and NLP applications.
 
-## Features
+## Project Details
+### Problem Statement
+The objective is to build a machine learning model that predicts which passengers survived the Titanic tragedy based on features such as age, sex, and class.
 
-- Predicts movie genres from plot summaries using multiple models (Logistic Regression, SVM, DistilBERT)
-- Comprehensive data preprocessing and sentiment analysis
-- Automated exploratory data analysis (EDA) with visualizations
-- Outputs predictions in structured CSV files for easy analysis
-- Modular, extensible codebase for experimentation and research
+### Data Exploration
+- Assessed data quality and missing values
+- Explored the impact of features like Age, Sex, and Embarked on survival
+- Visualized distributions of categorical and numerical variables
+
+### Data Cleaning
+- Removed irrelevant columns (Cabin, Name, Ticket)
+- Filled missing values (numerical: median, categorical: most frequent)
+- Encoded categorical variables numerically
+
+### Model Training
+- Trained and evaluated three models:
+  1. Linear Regression
+  2. Logistic Regression
+  3. Random Forest Classifier
+- Converted prediction probabilities to binary survival outcomes
+- Saved predictions for each model
 
 ## Tech Stack
 
@@ -19,8 +33,6 @@ Movie Genre Classification is an AI-powered system that predicts movie genres fr
 - **NLP & Data Processing:** NLTK, TextBlob, pandas, numpy, spaCy
 - **Visualization:** matplotlib, seaborn, wordcloud
 - **Utilities:** joblib, shap
-
-All dependencies are listed in `requirements.txt`.
 
 ## Getting Started
 
