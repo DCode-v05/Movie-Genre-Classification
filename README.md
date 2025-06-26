@@ -2,129 +2,127 @@
 
 ## Project Description
 
-MovieGenrePredictor is an AI-powered system designed to predict movie genres from plot summaries using multiple machine learning models, including Logistic Regression, Support Vector Machine (SVM), and DistilBERT. The project utilizes natural language processing (NLP) techniques to analyze and classify movie plots, making it an effective tool for automated genre classification.
+Movie Genre Classification is an AI-powered system that predicts movie genres from plot summaries using advanced Natural Language Processing (NLP) and machine learning models. The project leverages Logistic Regression, Support Vector Machine (SVM), and DistilBERT to automate and enhance the genre classification process for movie datasets. It is designed for researchers, data scientists, and movie enthusiasts interested in text classification and NLP applications.
 
 ## Features
 
-- Supports multiple models: Logistic Regression, SVM, and DistilBERT.
-- Utilizes NLP to process and understand movie plot summaries.
-- Simple setup for use on local machines or GitHub Codespaces.
-- Outputs predictions in structured CSV files for further analysis.
+- Predicts movie genres from plot summaries using multiple models (Logistic Regression, SVM, DistilBERT)
+- Comprehensive data preprocessing and sentiment analysis
+- Automated exploratory data analysis (EDA) with visualizations
+- Outputs predictions in structured CSV files for easy analysis
+- Modular, extensible codebase for experimentation and research
 
 ## Tech Stack
 
-- Python 3.8+
-- Scikit-learn (Logistic Regression, SVM)
-- Transformers (DistilBERT)
-- PyTorch
-- Pandas, NumPy, TextBlob, NLTK
-- Joblib for model serialization
+- **Programming Language:** Python 3.8+
+- **Machine Learning:** scikit-learn, transformers (DistilBERT), PyTorch
+- **NLP & Data Processing:** NLTK, TextBlob, pandas, numpy, spaCy
+- **Visualization:** matplotlib, seaborn, wordcloud
+- **Utilities:** joblib, shap
+
+All dependencies are listed in `requirements.txt`.
 
 ## Getting Started
 
-This section provides an overview of how to set up and use the project.
-
 ### Prerequisites
-
 - Python 3.8 or higher
-- Required Python libraries: pandas, numpy, scikit-learn, transformers, torch, joblib, textblob, nltk
-- Training and test data files (`train_data.txt` and `test_data.txt`) encoded in UTF-8, placed under the `data/` directory
+- Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
+- Place your data files (`train_data.txt`, `test_data.txt`) in the `data/` directory. Files must be UTF-8 encoded.
 
 ### Installation
-
 1. **Clone the repository:**
-   ```
-   git clone https://github.com/Denistanb/Movie-Genre-Classification.git
-   ```
-
-2. **Navigate to the project directory:**
-   ```
+   ```bash
+   git clone https://github.com/TensoRag/Movie-Genre-Classification.git
    cd Movie-Genre-Classification
    ```
-
-3. **Install the required dependencies:**
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
    ```
-   pip install pandas numpy scikit-learn transformers torch joblib textblob nltk
-   ```
-
-4. **Prepare the data files:**
-   - Place `train_data.txt` and `test_data.txt` in the `data/` directory.
-   - Ensure files are UTF-8 encoded. To fix encoding issues, you can use:
-     ```
-     iconv -f utf-8 -t utf-8 -c data/test_data.txt -o data/temp.txt && mv data/temp.txt data/test_data.txt
-     ```
+3. **Prepare data:**
+   - Ensure `data/train_data.txt` and `data/test_data.txt` are present and properly formatted.
+   - Data format:
+     - Train: `ID ::: TITLE ::: GENRE ::: DESCRIPTION`
+     - Test:  `ID ::: TITLE ::: DESCRIPTION`
+   - Source: ftp://ftp.fu-berlin.de/pub/misc/movies/database/
 
 ## Usage
 
-### Train Models
-
-Run the training script to train the models using your training data:
-
+### 1. Exploratory Data Analysis (Optional but Recommended)
+Generate and save EDA visualizations:
+```bash
+python notebooks/EDA.py
 ```
+Visualizations will be saved in the `outputs/` directory (e.g., genre distribution, sentiment analysis, co-occurrence heatmaps).
+
+### 2. Train Models
+Train all models using your training data:
+```bash
 cd src
 python train.py
 ```
+Trained models will be saved in the `models/` directory.
 
-The trained models will be saved in the `models/` directory as follows:
-- `logreg_model.joblib` for Logistic Regression
-- `svm_model.joblib` for SVM
-- `distilbert_model/` directory for DistilBERT
-
-### Predict Genres
-
-Run the evaluation script to generate predictions for your test data:
-
-```
+### 3. Predict Genres
+Generate predictions for your test data:
+```bash
 python evaluate.py
 ```
-
-Prediction results will be saved in the `outputs/` directory as CSV files (e.g., `logreg_predictions.csv`), each containing columns: `id`, `title`, `plot`, `predicted_genre`.
-
-### Verify Results
-
-- Trained models are stored in the `models/` directory.
-- Prediction outputs are available in the `outputs/` directory.
+Prediction results will be saved in the `outputs/` directory as CSV files (e.g., `logreg_predictions.csv`, `svm_predictions.csv`, `distilbert_predictions.csv`).
 
 ## Project Structure
 
 ```
-MovieGenrePredictor/
-├── data/                 # Input data
-│   ├── train_data.txt    # Training data (ID ::: Title ::: Genre ::: Plot)
-│   └── test_data.txt     # Test data (ID ::: Title ::: Plot)
-├── models/               # Trained models
+Movie-Genre-Classification/
+├── data/                # Input data files
+│   ├── train_data.txt
+│   ├── test_data.txt
+│   ├── test_data_solution.txt
+│   └── description.txt
+├── models/              # Trained models
 │   ├── logreg_model.joblib
 │   ├── svm_model.joblib
 │   └── distilbert_model/
-├── outputs/              # Prediction results (e.g., logreg_predictions.csv)
-└── src/                  # Source code
-    ├── preprocess.py     # Data preprocessing and vectorization
-    ├── train.py          # Model training script
-    └── evaluate.py       # Prediction script
+│       ├── config.json
+│       ├── label_encoder.joblib
+│       ├── model.safetensors
+│       └── tokenizer.joblib
+├── outputs/             # Predictions & EDA visualizations
+│   ├── *.csv            # Model predictions
+│   └── *.png            # EDA plots
+├── notebooks/           # EDA and analysis scripts
+│   └── EDA.py
+├── src/                 # Source code
+│   ├── preprocess.py    # Data loading & preprocessing
+│   ├── train.py         # Model training
+│   └── evaluate.py      # Model evaluation & prediction
+├── requirements.txt     # Python dependencies
+└── README.md            # Project documentation
 ```
 
 ## Contributing
 
-Contributions are welcome. To contribute:
-
-1. Fork the repository.
+Contributions are welcome! To contribute:
+1. Fork the repository
 2. Create a new branch:
-   ```
+   ```bash
    git checkout -b feature/your-feature
    ```
 3. Commit your changes:
-   ```
+   ```bash
    git commit -m "Add your feature"
    ```
-4. Push to the branch:
-   ```
+4. Push to your branch:
+   ```bash
    git push origin feature/your-feature
    ```
-5. Open a pull request.
+5. Open a pull request describing your changes.
 
 ## Contact
 
-For questions or feedback, contact:
-
-- GitHub: [Denistanb](https://github.com/Denistanb)
-- Email: denistanb05@gmail.com
+For questions, suggestions, or collaboration:
+- **GitHub:** [TensoRag](https://github.com/TensoRag)
+- **Email:** denistanb05@gmail.com
