@@ -51,7 +51,7 @@ All dependencies are listed in `requirements.txt`.
 
 ## Usage
 
-### 1. Exploratory Data Analysis (Optional but Recommended)
+### 1. Exploratory Data Analysis
 Generate and save EDA visualizations:
 ```bash
 python notebooks/EDA.py
