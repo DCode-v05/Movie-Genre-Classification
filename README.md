@@ -7,7 +7,6 @@ Movie Genre Classification is an AI-powered system that predicts movie genres fr
 ## Project Details
 
 ### Data
-- **Source:** [ftp://ftp.fu-berlin.de/pub/misc/movies/database/](ftp://ftp.fu-berlin.de/pub/misc/movies/database/)
 - **Format:**
   - **Train data:** `ID ::: TITLE ::: GENRE ::: DESCRIPTION`
   - **Test data:** `ID ::: TITLE ::: DESCRIPTION`
