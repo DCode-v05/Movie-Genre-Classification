@@ -5,26 +5,40 @@
 Movie Genre Classification is an AI-powered system that predicts movie genres from plot summaries using advanced Natural Language Processing (NLP) and machine learning models. The project leverages Logistic Regression, Support Vector Machine (SVM), and DistilBERT to automate and enhance the genre classification process for movie datasets. It is designed for researchers, data scientists, and movie enthusiasts interested in text classification and NLP applications.
 
 ## Project Details
-### Problem Statement
-The objective is to build a machine learning model that predicts which passengers survived the Titanic tragedy based on features such as age, sex, and class.
 
-### Data Exploration
-- Assessed data quality and missing values
-- Explored the impact of features like Age, Sex, and Embarked on survival
-- Visualized distributions of categorical and numerical variables
+### Data
+- **Source:** [ftp://ftp.fu-berlin.de/pub/misc/movies/database/](ftp://ftp.fu-berlin.de/pub/misc/movies/database/)
+- **Format:**
+  - **Train data:** `ID ::: TITLE ::: GENRE ::: DESCRIPTION`
+  - **Test data:** `ID ::: TITLE ::: DESCRIPTION`
+- **Files:**
+  - `data/train_data.txt` — Labeled training data
+  - `data/test_data.txt` — Unlabeled test data
+  - `data/test_data_solution.txt` — Test data with ground truth genres (for evaluation)
 
-### Data Cleaning
-- Removed irrelevant columns (Cabin, Name, Ticket)
-- Filled missing values (numerical: median, categorical: most frequent)
-- Encoded categorical variables numerically
+### Models
+- **Logistic Regression** and **SVM**: Trained on TF-IDF features extracted from cleaned plot summaries.
+- **DistilBERT**: Fine-tuned transformer model for sequence classification, leveraging contextual embeddings.
+- **Model Artifacts:**
+  - `models/logreg_model.joblib`
+  - `models/svm_model.joblib`
+  - `models/distilbert_model/` (contains model, tokenizer, and label encoder)
 
-### Model Training
-- Trained and evaluated three models:
-  1. Linear Regression
-  2. Logistic Regression
-  3. Random Forest Classifier
-- Converted prediction probabilities to binary survival outcomes
-- Saved predictions for each model
+### Exploratory Data Analysis (EDA)
+- Visualizations and statistics are generated in `notebooks/EDA.py` and saved in the `outputs/` directory, including:
+  - Genre distribution
+  - Plot length distribution
+  - Genre co-occurrence heatmap
+  - Sentiment analysis by genre
+  - Genre trends over time
+
+### Outputs
+- **Predictions:**
+  - `outputs/logreg_predictions.csv`
+  - `outputs/svm_predictions.csv`
+  - `outputs/distilbert_predictions.csv`
+- **Visualizations:**
+  - Various `.png` files in `outputs/` for EDA and analysis
 
 ## Tech Stack
 
