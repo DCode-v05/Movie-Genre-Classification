@@ -60,7 +60,7 @@ Movie Genre Classification is an AI-powered system that predicts movie genres fr
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/TensoRag/Movie-Genre-Classification.git
+   git clone https://github.com/DCode-v05/Movie-Genre-Classification.git
    cd Movie-Genre-Classification
    ```
 2. **Install dependencies:**
